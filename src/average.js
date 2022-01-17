@@ -12,8 +12,20 @@
     - average([1, '2']) // Retorno: undefined;
 */
 
-const average = () => {
-  //funcao aqui
+const average = (entry) => {
+  let sum = 0;
+  if (entry.length === 0) {
+    return;
+  }
+  for (let values1 of entry) {
+    if (typeof (values1) === 'string') {
+      return;
+    }
+  }
+  for (let values2 of entry) {
+    sum += values2;
+  }
+  return Math.round(sum / entry.length);
 };
 
 module.exports = average;
