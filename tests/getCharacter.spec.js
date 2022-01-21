@@ -42,14 +42,54 @@ Retorno:
 */
 
 describe('9 - Implemente os casos de teste da função `getCharacter`', () => {
-  it('Verifica se a função `getCharacter` retorna o objeto do personagem corretamente.', () => {
-    fail('Teste vazio!');
-    // ESCREVA SEUS TESTES ABAIXO:
+  it('Verifica se a função, quando não recebe nenhum parâmetro, retorna undefined.', () => {
+    expect(getCharacter()).toBe(undefined);
     // Teste se a função, quando não recebe nenhum parâmetro, retorna undefined.
+  });
+  it('Verifica se a função retorna o objeto correto para o parâmetro "Arya".', () => {
+    expect(getCharacter('Arya')).toEqual({
+      name: 'Arya Stark',
+      class: 'Rogue',
+      phrases: ['Not today', 'A girl has no name.'],
+    });
     // Teste se a função retorna o objeto correto para o parâmetro 'Arya',
+  });
+  it('Verifica se a função retorna o objeto correto para o parâmetro "Brienne".', () => {
+    expect(getCharacter('Brienne')).toEqual({
+      name: 'Brienne Tarth',
+      class: 'Knight',
+      phrases: ['Im No Lady, Your Grace.', 'I, Brienne Of Tarth, Sentence You To Die.'],
+    });
     // Teste se a função retorna o objeto correto para o parâmetro 'Brienne',
+  });
+  it('Verifica se a função retorna o objeto correto para o parâmetro "Melissandre".', () => {
+    expect(getCharacter('Melissandre')).toEqual({
+      name: 'Melissandre',
+      class: 'Necromancer',
+      phrases: ['Death By Fire Is The Purest Death.', 'For The Night Is Dark And Full Of Terrors.'],
+    });
     // Teste se a função retorna o objeto correto para o parâmetro 'Melissandre',
+  });
+  it('Verifica se os parâmetros não são Case Sensitive.', () => {
+    expect(getCharacter('ARYA')).toEqual({
+      name: 'Arya Stark',
+      class: 'Rogue',
+      phrases: ['Not today', 'A girl has no name.'],
+    });
+    expect(getCharacter('BRIENNE')).toEqual({
+      name: 'Brienne Tarth',
+      class: 'Knight',
+      phrases: ['Im No Lady, Your Grace.', 'I, Brienne Of Tarth, Sentence You To Die.'],
+    });
+    expect(getCharacter('MELISSANDRE')).toEqual({
+      name: 'Melissandre',
+      class: 'Necromancer',
+      phrases: ['Death By Fire Is The Purest Death.', 'For The Night Is Dark And Full Of Terrors.'],
+    });
     // Teste se os parâmetros não são Case Sensitive.
+  });
+  it('Verifica se ao passar um nome que não está na tabela, a função retorna undefined.', () => {
+    expect(getCharacter('John')).toBe(undefined);
     // Teste se ao passar um nome que não está na tabela, a função retorna undefined.
   });
 });
